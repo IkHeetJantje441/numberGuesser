@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Угадай число</title>
+    <link rel="icon" href="images/icon.webp">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/bootstrap.min.js" defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="container-md text-center min-vh-50">
+        <h1>Угадай число</h1>
+        <form class="guesser">
+            <p class="guesser__info">
+                Компьютер загадал число в диапазоне [<span id="left-bound"></span>; <span id="right-bound">.</span>]
+            </p>
+            <fieldset>
+                <input id="guesser__input-field" type="number" placeholder="Введите число">
+                <div class="btn-group">
+                    <button class="btn btn-primary" id="btn-attempt">Попытаться</button>
+                    <button class="btn btn-primary" id="btn-restart">Начать заново</button>
+                </div>
+            </fieldset>
+            <div class="guesser__history">
+            </div>
+            <div class="guesser__progress">
+                <h5 class="guesser__progress-title">Шкала оставшихся попыток</h5>
+                <div class="progress" role="progressbar">
+                    <div class="progress-bar"><span id="attempts-remaining"></span></div>
+                  </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
