@@ -1,6 +1,5 @@
-.container-md {
-    background-color: #b7e6e2;
-    border: 2px solid #000000;
+body {
+    background-image: linear-gradient(to right bottom, #88f6ed, #8bf5db, #95f4c6, #a5f0b0, #b9ec9a);
 }
 
 #guesser__input-field::-webkit-inner-spin-button, 
