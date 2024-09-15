@@ -16,10 +16,14 @@ var guesserHistory = document.querySelector(".guesser__history");
 
 var attemptButton = document.getElementById("btn-attempt");
 var restartButton = document.getElementById("btn-restart");
+var progressBar = document.querySelector('.progress-bar');
+progressBar.style.width = '100%';
+progressBar.innerText = attemptsQuantity;
 
+document.getElementById("guesser__input-field").focus();
 attemptButton.addEventListener("click", (e) => {
     e.preventDefault();
-    var attemptValue = Number(document.querySelector("#guesser__input-field").value);
+    var attemptValue = Number(document.getElementById("guesser__input-field").value);
     if (attemptValue < rangeBound_left || attemptValue > rangeBound_right)
         var result = "Число " + attemptValue + " выходит за границы указанного диапазона.";
     else if (attemptValue != valueToGuess && attemptsQuantity > 0) {
@@ -29,6 +33,7 @@ attemptButton.addEventListener("click", (e) => {
     else if (attemptValue === valueToGuess && attemptsQuantity > 0) {
         var result = "Совершенно верно, было загадано число " + attemptValue + "!";
         document.getElementById('guesser__input-field').disabled = true;
+        document.getElementById("btn-attempt").disabled = true;
         document.getElementById('guesser__input-field').style.backgroundColor = '#33FF99';
         document.getElementById("btn-restart").focus();
     }
@@ -36,7 +41,8 @@ attemptButton.addEventListener("click", (e) => {
     {
         document.getElementById('guesser__input-field').style.backgroundColor = '#FF034F';
         document.getElementById('guesser__input-field').disabled = true;
-        var result = "Ваши попытки кончились, Вы проиграли… Желаете сыграть вновь?";
+        document.getElementById("btn-attempt").disabled = true;
+        var result = "Ваши попытки кончились, Вы проиграли… Было загадано число " + valueToGuess + ". Желаете сыграть вновь?";
         document.getElementById("btn-restart").focus();
 
     }
@@ -48,7 +54,7 @@ attemptButton.addEventListener("click", (e) => {
     document.getElementById('guesser__input-field').value = "";
 
     var remainingPercentage = Math.floor((maxAttempts - attemptsQuantity) / maxAttempts * 100);
-    var progressBar = document.querySelector('.progress-bar');
-    progressBar.style.width = remainingPercentage + '%';
+    
+    progressBar.style.width = (100 - remainingPercentage) + '%';
     progressBar.innerText = attemptsQuantity;
 })
