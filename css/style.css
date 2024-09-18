@@ -41,7 +41,7 @@ fieldset {
     margin: 0 auto 10px;
 }
 
-@media (max-width: 412px) {
+@media (max-width: 414px) {
     .btn-group {
         margin-top: 10px;
     }
